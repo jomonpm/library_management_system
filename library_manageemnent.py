@@ -69,6 +69,8 @@ class Management_system():
 if __name__ == "__main__":
     flag = input("Hi..New User? (yes/no)")
     user_exist = False
+    name = input("Please enter your name ")
+    user_exist = User.create_new_user(name)
     while flag =="yes" and user_exist == False:
  
         name = input("Please enter your name ")
@@ -86,6 +88,9 @@ if __name__ == "__main__":
         """
         if given_name in User.existing_names_list:
             print(f"Hello {given_name}")
+        else:
+            print("Your name couldnot be found..Please create an account")
+
         
 
     
