@@ -54,14 +54,14 @@ if __name__ == "__main__":
    
     def accept_new_user():
         name = input("Please enter your name ")
-        User.create_new_user(name)
+        User_validation.create_new_user(name)
         
     def existing_user():
         while True:
             given_name = input("Please enter your name ")
-            User.check_user()
+            User_validation.check_user()
             
-            if given_name in User.existing_names_list:
+            if given_name in User_validation.existing_names_list:
                 print(f"Hello {given_name}")
                 break
             else:
