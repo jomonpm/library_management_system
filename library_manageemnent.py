@@ -69,28 +69,33 @@ class Management_system():
 if __name__ == "__main__":
     flag = input("Hi..New User? (yes/no)")
     user_exist = False
-    name = input("Please enter your name ")
-    user_exist = User.create_new_user(name)
-    while flag =="yes" and user_exist == False:
- 
+    
+    def name_input():
         name = input("Please enter your name ")
-        user_exist = User.create_new_user(name)
-
-    if flag == 'no':
-        given_name = input("Enter name ")
-        User.check_user()
-        """
-        with open("Library_users", "r") as file:    
-            for line in file:
-                existing_names, existing_user_id  = line.split(",", 1)
-                User.existing_names_list.append(existing_names)
-                User.existing_user_id_list.append(existing_user_id)
-        """
-        if given_name in User.existing_names_list:
-            print(f"Hello {given_name}")
+        return name
+    
+    while user_exist == False:
+        if flag =="yes":
+            name = name_input()
+            user_exist = User.create_new_user(name)
+ 
         else:
-            print("Your name couldnot be found..Please create an account")
-
+            given_name = input("Enter name ")
+            User.check_user()
+            """
+            with open("Library_users", "r") as file:    
+                for line in file:
+                    existing_names, existing_user_id  = line.split(",", 1)
+                    User.existing_names_list.append(existing_names)
+                    User.existing_user_id_list.append(existing_user_id)
+            """
+            
+            if given_name in User.existing_names_list:
+                print(f"Hello {given_name}")
+                user_exist = True
+            else:
+                print("Your name couldnot be found..Please create an account")
+                name_input()
         
 
     
